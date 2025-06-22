@@ -10,7 +10,19 @@ def get_book_text(file_path):
 def main():
     book_text = get_book_text("books/frankenstein.txt")
     num_of_words = get_number_of_words(book_text)
-    print(f"{num_of_words} words found in the document")
-    print(get_instances_of_characters(book_text))
+    instances_dict = get_instances_of_characters(book_text)
+
+    print("============ BOOKBOT ============")
+    print("Analyzing book found at books/frankenstein.txt...")
+    print("----------- Word Count ----------")
+    print(f"Found {num_of_words} total words")
+    print("--------- Character Count -------")
+
+    for instance in instances_dict:
+        if instance["name"].isalpha():
+            print(f"{instance["name"]}: {instance["num"]}")
+
+    print("============= END ===============")
+
 
 main()
